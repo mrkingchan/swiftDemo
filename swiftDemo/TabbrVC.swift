@@ -13,7 +13,6 @@ class TabbrVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
-        
         let cardVC = CardVC.init(nibName: nil, bundle: nil);
         cardVC.title = NSStringFromClass(CardVC.classForCoder());
         var navi1 = UINavigationController.init(rootViewController: cardVC);
@@ -40,10 +39,10 @@ class TabbrVC: UITabBarController {
         navi4.tabBarItem = item4;
         
         let naviArray:NSMutableArray = NSMutableArray.init(capacity: 4);
-        naviArray.add(navi4);
-        naviArray.add(navi3);
-        naviArray.add(navi2);
         naviArray.add(navi1);
+        naviArray.add(navi2);
+        naviArray.add(navi3);
+        naviArray.add(navi4);
         self.viewControllers = naviArray as? [UIViewController];
         
     }
