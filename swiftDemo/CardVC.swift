@@ -64,4 +64,30 @@ class CardVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50;
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true;
+    }
+    
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+        -> UISwipeActionsConfiguration? {
+            let contexual1 = UIContextualAction.init(style: UIContextualAction.Style.normal, title: "") { (action, subView, nil) in
+                action.image = UIImage.init(named: "tabbar_1");
+                subView.backgroundColor = UIColor.orange;
+            }
+            let contexual2 = UIContextualAction.init(style: UIContextualAction.Style.normal, title: "") { (action, subView, nil) in
+                action.image = UIImage.init(named: "tabbar_2");
+                subView.backgroundColor = UIColor.red;
+            }
+            let contexual3 = UIContextualAction.init(style: UIContextualAction.Style.normal, title: "") { (action, subView, nil) in
+                action.image = UIImage.init(named: "tabbar_3");
+                subView.backgroundColor = UIColor.blue;
+            }
+            let contexual4 = UIContextualAction.init(style: UIContextualAction.Style.normal, title: "") { (action, subView, nil) in
+                action.image = UIImage.init(named: "tabbar_4");
+                subView.backgroundColor = UIColor.green;
+            }
+            return UISwipeActionsConfiguration.init(actions: [contexual1,contexual2,contexual3,contexual4]);
+    }
 }

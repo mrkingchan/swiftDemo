@@ -26,9 +26,10 @@ class RemindDetailVC: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.dataArray = NSMutableArray.init();
         DispatchQueue.global().async {
             for _ in 0..<100 {
+                let value = Random.number(end:4).last;
                 let model = Model.init();
                 model.titleStr = "xxxxxxx";
-                model.imageUrl = "tabbar_1";
+                model.imageUrl = String.init(format: "tabbar_%zd", value!);
                 self.dataArray?.add(model);
             }
             DispatchQueue.main.async {
@@ -59,6 +60,7 @@ class RemindDetailVC: UIViewController,UITableViewDelegate,UITableViewDataSource
             let beiziser = UIBezierPath.init();
             beiziser.move(to: CGPoint.init(x: rec.origin.x, y: rec.origin.y));
             beiziser.addQuadCurve(to: CGPoint.init(x: UIScreen.main.bounds.size.width * 0.7, y: UIScreen.main.bounds.size.height + 200), controlPoint:CGPoint.init(x: 0.6 * UIScreen.main.bounds.size.width, y: 0));
+            //moveAnimation
             let moveAnimation = CAKeyframeAnimation.init(keyPath: "position");
             moveAnimation.repeatCount = 1;
             moveAnimation.isRemovedOnCompletion = false;
@@ -68,6 +70,7 @@ class RemindDetailVC: UIViewController,UITableViewDelegate,UITableViewDataSource
             moveAnimation.duration = 1.0;
             moveAnimation.delegate = self as CAAnimationDelegate;
 
+            //rotateAniamtion
             let rotateAnimation = CABasicAnimation.init(keyPath: "transform.rotation.z");
             rotateAnimation.repeatCount = Float(INT_MAX);
             rotateAnimation.fromValue = NSNumber.init(value: 0);
@@ -78,6 +81,7 @@ class RemindDetailVC: UIViewController,UITableViewDelegate,UITableViewDataSource
             rotateAnimation.duration = 1.0;
             rotateAnimation.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionLinear);
             
+            //animationGroup
             let group = CAAnimationGroup.init();
             group.animations = [moveAnimation,rotateAnimation];
             group.repeatCount = 1;
@@ -99,5 +103,10 @@ class RemindDetailVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     // MARK: CAAnimationDelegate
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         self.animateImage?.removeFromSuperview();
+    }
+    
+    // MARK: memeory management
+    deinit {
+        
     }
 }

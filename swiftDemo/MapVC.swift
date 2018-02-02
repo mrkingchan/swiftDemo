@@ -97,10 +97,15 @@ class MapVC: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
     }
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         self.map?.setRegion(MKCoordinateRegion.init(center: userLocation.coordinate, span: MKCoordinateSpan.init(latitudeDelta: 0.1, longitudeDelta: 0.1)), animated: true);
-        /*self.geo?.reverseGeocodeLocation(userLocation.location!, completionHandler: { (places, error) in
-            let place= places?.first;
-            self.navigationItem.title = String.init(format:"%@%@%@",(place?.thoroughfare)!,(place?.subAdministrativeArea)!,(place?.name)!);
-        })*/
+        /*if userLocation != nil {
+            self.geo?.reverseGeocodeLocation(userLocation.location!, completionHandler: { (places, error) in
+                let place = places?.first;
+                if place != nil {
+                    /*self.navigationItem.title = String.init(format:"%@%@%@",(place?.thoroughfare)! == nil ? "":(place?.thoroughfare)!,(place?.subAdministrativeArea)! == nil ? "":(place?.subAdministrativeArea)!,(place?.name)! == nil ? "":(place?.name)!);*/
+                    self.navigationItem.title = place?.name! == nil ? "":place?.name!;
+                }
+            });
+        }*/
     }
     
     // MARK: CLLocationManagerDelegate
