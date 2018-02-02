@@ -17,9 +17,30 @@ class MapVC: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
     var geo:CLGeocoder?;
     var userLocation:CLLocationCoordinate2D?;
 
+    // MARK: LifeCircle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.denied {
+            let alertController = UIAlertController.init(title: "定位被拒绝，请前往设置打开", message:nil, preferredStyle: UIAlertControllerStyle.alert);
+            for _ in 0..<1 {
+                let alertAction = UIAlertAction.init(title:"确定", style: UIAlertActionStyle.default) { action in
+                    let url = URL.init(string: UIApplicationOpenSettingsURLString);
+                    if UIApplication.shared.canOpenURL(url!) {
+                        UIApplication.shared.openURL(url!);
+                    } else {
+                        
+                    }
+                };
+                alertController.addAction(alertAction);
+            }
+            self.present(alertController, animated: true, completion: nil);
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad();
+        
         self.view.backgroundColor = UIColor.white;
+        // MARK: geo
         self.geo = CLGeocoder.init();
         self.geo?.geocodeAddressString("深圳市宝安区西乡街道") { (places, error) in
             if error == nil {
@@ -27,7 +48,6 @@ class MapVC: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
                 let location = placeArray.first?.location;
                 print(String.init(format: "longitude = %.3f,latitude = %.3f", Float((location?.coordinate.longitude)!),Float((location?.coordinate.latitude)!)));
             }
-
         }
         // MARK: mapView
         self.map = MKMapView.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 49));
@@ -40,10 +60,10 @@ class MapVC: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
         self.view.addSubview(self.map!);
         
         // MARK: manager
-        
         if #available(iOS 11.0, *) {
             self.manager?.showsBackgroundLocationIndicator = true
         }
+        
         if CLLocationManager.locationServicesEnabled() {
             self.manager = CLLocationManager.init();
             self.manager?.distanceFilter = 10.0;
@@ -54,6 +74,12 @@ class MapVC: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
             let alertController = UIAlertController.init(title: "定位被拒绝，请前往设置打开", message:nil, preferredStyle: UIAlertControllerStyle.alert);
             for _ in 0..<1 {
                 let alertAction = UIAlertAction.init(title:"确定", style: UIAlertActionStyle.default) { action in
+                    let url = URL.init(string: UIApplicationOpenSettingsURLString);
+                    if UIApplication.shared.canOpenURL(url!) {
+                        UIApplication.shared.openURL(url!);
+                    } else {
+                        
+                    }
                 };
                 alertController.addAction(alertAction);
             }
@@ -70,19 +96,19 @@ class MapVC: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
     func mapViewWillStartLocatingUser(_ mapView: MKMapView) {
         print(#function);
     }
-    
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         self.map?.setRegion(MKCoordinateRegion.init(center: userLocation.coordinate, span: MKCoordinateSpan.init(latitudeDelta: 0.1, longitudeDelta: 0.1)), animated: true);
+        /*self.geo?.reverseGeocodeLocation(userLocation.location!, completionHandler: { (places, error) in
+            let place= places?.first;
+            self.navigationItem.title = String.init(format:"%@%@%@",(place?.thoroughfare)!,(place?.subAdministrativeArea)!,(place?.name)!);
+        })*/
     }
     
     // MARK: CLLocationManagerDelegate
-    
     func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
         print(#function);
     }
-    
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         print(#function);
     }
-    
 }

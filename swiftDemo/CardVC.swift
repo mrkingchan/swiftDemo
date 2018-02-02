@@ -26,6 +26,7 @@ class CardVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         self.setUI();
     }
     
+    // MARK: private Method
     @objc func buttonAction() {
         print(#function);
         let VC = NextVC.init(nibName: nil, bundle: nil);
