@@ -7,13 +7,12 @@
 //
 
 import UIKit
-
 class TabbrVC: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
-        let cardVC = CardVC.init(nibName: nil, bundle: nil);
+        /*let cardVC = CardVC.init(nibName: nil, bundle: nil);
         cardVC.title = NSStringFromClass(CardVC.classForCoder()).components(separatedBy: ".").last;
         var navi1 = UINavigationController.init(rootViewController: cardVC);
         let item1 = UITabBarItem.init(title: NSStringFromClass(cardVC.classForCoder).components(separatedBy: ".").last, image: UIImage.init(named: "tabbar_1"), selectedImage: nil);
@@ -43,38 +42,30 @@ class TabbrVC: UITabBarController {
         naviArray.add(navi2);
         naviArray.add(navi3);
         naviArray.add(navi4);
-        self.viewControllers = naviArray as? [UIViewController];
+        self.viewControllers = naviArray as? [UIViewController];*/
         
-    }
-       /*let s1 = NSStringFromClass(CardVC.classForCoder()).components(separatedBy: ".").last;
-       let s2 = NSStringFromClass(RemindVC.classForCoder()).components(separatedBy: ".").last;
-        let s3 = NSStringFromClass(MapVC.classForCoder()).components(separatedBy: ".").last;
-        let s4 = NSStringFromClass(SettingVC.classForCoder()).components(separatedBy: ".").last;
-
-        let classNameArrray:[AnyClass] = [NSClassFromString(s1!)!,
-                                          NSClassFromString(s2!)!,
-                                          NSClassFromString(s3!)!,
-                                          NSClassFromString(s4!)!
-        ];
-        
-        var navis:NSMutableArray = NSMutableArray.init(capacity: 4);
+    let classNameArrray:[AnyClass] = [CardVC.classForCoder(),
+                                          RemindVC.classForCoder(),
+                                          MapVC.classForCoder(),
+                                          SettingVC.classForCoder()] ;
+        let navis:NSMutableArray = NSMutableArray.init();
         for i in 0..<classNameArrray.count{
-            let viewControler = self.viewControllerWithConfigure(classNameArrray[i] as AnyClass, titleStr: NSStringFromClass(classNameArrray[i]) as NSString, normalImage: UIImage.init(named: "")!, selectedImage:UIImage.init(named: "")!) ;
+            let viewControler = self.viewControllerWithConfigure(classNameArrray[i] as AnyClass, titleStr: NSStringFromClass(classNameArrray[i]) as NSString, normalImage: UIImage.init(named:String.init(format: "tabbar_%d",i + 1))!, selectedImage:UIImage.init(named: String.init(format: "tabbar_%d", i + 1))!);
             //导航VC
             let navi = UINavigationController.init(rootViewController: viewControler as UIViewController);
             navis.add(navi);
         }
         self.viewControllers = navis as? [UIViewController];
-    }*/
-    
+    }
     // MARK: getViewController
-    func viewControllerWithConfigure(_ className:AnyClass,titleStr:NSString,normalImage:UIImage?,selectedImage:UIImage?) -> UIViewController{
-        var nsobjectype : UIViewController.Type = className as! UIViewController.Type
-        var viewController: UIViewController = nsobjectype.init(nibName: nil, bundle: nil);
+    func viewControllerWithConfigure(_ className:AnyClass?,titleStr:NSString,normalImage:UIImage?,selectedImage:UIImage?) -> UIViewController{
+        /*var nsobjectype : UIViewController.Type = className as! UIViewController.Type
+        var viewController: UIViewController = nsobjectype.init(nibName: nil, bundle: nil);*/
+        let viewController:UIViewController? = self.swiftClassFromString(className: NSStringFromClass(className!));
         let item:UITabBarItem = UITabBarItem.init(title: titleStr as String, image: normalImage, selectedImage: selectedImage);
         item.title = titleStr.components(separatedBy: ".").last;
-        viewController.tabBarItem  = item;
-        return viewController;
+        viewController?.tabBarItem  = item;
+        return viewController!;
     }
             
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -103,5 +94,20 @@ class TabbrVC: UITabBarController {
         scaleAnimation.autoreverses = true;
         let subView:UIView = views[index] as! UIView;
         subView.layer.add(scaleAnimation, forKey: "nil");
+    }
+    
+    func swiftClassFromString(className: String) -> UIViewController! {
+        // get the project name
+        if  let appName: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String? {
+            //拼接控制器名
+            let classStringName = "\(className)"
+            //将控制名转换为类
+            let classType = NSClassFromString(classStringName) as? UIViewController.Type
+            if let type = classType {
+                let newVC = type.init();
+                return newVC;
+            }
+        }
+        return nil;
     }
 }

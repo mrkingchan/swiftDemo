@@ -24,6 +24,7 @@
 		D21E54232024339800C619D5 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E54222024339800C619D5 /* Cell.swift */; };
 		D21E54252024353F00C619D5 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E54242024353F00C619D5 /* Model.swift */; };
 		D21E54272024363500C619D5 /* RemindDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E54262024363500C619D5 /* RemindDetailVC.swift */; };
+		D21E543120247E1700C619D5 /* ClassForInitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E543020247E1700C619D5 /* ClassForInitVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		D21E54222024339800C619D5 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		D21E54242024353F00C619D5 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D21E54262024363500C619D5 /* RemindDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindDetailVC.swift; sourceTree = "<group>"; };
+		D21E543020247E1700C619D5 /* ClassForInitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassForInitVC.swift; sourceTree = "<group>"; };
 		F66D33491633F8C49233053D /* Pods-swiftDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-swiftDemo/Pods-swiftDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -219,6 +221,7 @@
 		D21E542F20244C6000C619D5 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				D21E543020247E1700C619D5 /* ClassForInitVC.swift */,
 				D21E54202023105A00C619D5 /* NetTool.swift */,
 			);
 			path = Tool;
@@ -414,6 +417,7 @@
 				D21E54272024363500C619D5 /* RemindDetailVC.swift in Sources */,
 				D21E54192022E07D00C619D5 /* MapVC.swift in Sources */,
 				D21E54132022E03400C619D5 /* TabbrVC.swift in Sources */,
+				D21E543120247E1700C619D5 /* ClassForInitVC.swift in Sources */,
 				D21E54152022E06100C619D5 /* CardVC.swift in Sources */,
 				D21E54252024353F00C619D5 /* Model.swift in Sources */,
 				D21E54232024339800C619D5 /* Cell.swift in Sources */,

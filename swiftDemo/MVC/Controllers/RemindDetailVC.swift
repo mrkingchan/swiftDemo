@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol dataDelegate:NSObjectProtocol {
+    func passValue(value:AnyObject);
+}
+
 class RemindDetailVC: UIViewController,UITableViewDelegate,UITableViewDataSource,CAAnimationDelegate {
+    weak var delegate:dataDelegate?;
     
     var tableView:UITableView?;
     var dataArray:NSMutableArray?;
@@ -17,6 +22,7 @@ class RemindDetailVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(back));
         self.navigationItem.title = NSStringFromClass(self.classForCoder).components(separatedBy:".").last;
         self.tableView = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height), style: UITableViewStyle.plain);
         self.tableView?.tableFooterView = UIView.init();
@@ -36,6 +42,11 @@ class RemindDetailVC: UIViewController,UITableViewDelegate,UITableViewDataSource
                 self.tableView?.reloadData();
             }
         }
+    }
+    
+    @objc func back() {
+        self.navigationController?.popViewController(animated: true);
+        self.delegate?.passValue(value: self.dataArray!);
     }
     
     // MARK: --UITableViewDataSource&Delegate

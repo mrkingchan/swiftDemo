@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RemindVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class RemindVC: UIViewController,UITableViewDelegate,UITableViewDataSource,dataDelegate {
     
     var tableView:UITableView?;
     var dataArray:NSMutableArray?;
@@ -95,6 +95,7 @@ class RemindVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         cell.textLabel?.text = self.dataArray?.object(at: indexPath.row) as? String;
         return cell;
     }
+    
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "deleteAction";
     }
@@ -132,9 +133,27 @@ class RemindVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let swipAction = UISwipeActionsConfiguration.init(actions: [contection]);
         return swipAction;
     }
+    // MARK: didSelect
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let VC = RemindDetailVC.init(nibName: nil, bundle: nil);
         VC.hidesBottomBarWhenPushed = true;
+        VC.delegate = self;
         self.navigationController?.pushViewController(VC, animated: true);
+    }
+    // MARK: dataDelegate
+    func passValue(value: AnyObject) {
+        if value.isKind(of: NSMutableArray.classForCoder()) {
+            let valueArray:NSMutableArray = value as! NSMutableArray;
+            for item in valueArray {
+                let itemObject:AnyObject = item as AnyObject;
+                if itemObject.isKind(of: Model.classForCoder()) {
+                    let model:Model = itemObject as! Model;
+                    self.dataArray?.add(model.titleStr as! String);
+                    DispatchQueue.main.async {
+                        self.tableView?.reloadData();
+                    }
+                }
+            }
+        }
     }
 }
