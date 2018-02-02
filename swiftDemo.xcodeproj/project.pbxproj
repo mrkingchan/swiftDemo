@@ -115,17 +115,9 @@
 		D21E53E12022DFBB00C619D5 /* swiftDemo */ = {
 			isa = PBXGroup;
 			children = (
-				D21E53E22022DFBB00C619D5 /* AppDelegate.swift */,
-				D21E54122022E03400C619D5 /* TabbrVC.swift */,
-				D21E54142022E06100C619D5 /* CardVC.swift */,
-				D21E541C2023014500C619D5 /* NextVC.swift */,
-				D21E54162022E07400C619D5 /* RemindVC.swift */,
-				D21E54262024363500C619D5 /* RemindDetailVC.swift */,
-				D21E54202023105A00C619D5 /* NetTool.swift */,
-				D21E54182022E07D00C619D5 /* MapVC.swift */,
-				D21E541A2022E09100C619D5 /* SettingVC.swift */,
-				D21E54222024339800C619D5 /* Cell.swift */,
-				D21E54242024353F00C619D5 /* Model.swift */,
+				D21E542F20244C6000C619D5 /* Tool */,
+				D21E542A20244C2B00C619D5 /* AppDelegate */,
+				D21E542920244C1600C619D5 /* MVC */,
 				D21E53E62022DFBB00C619D5 /* Main.storyboard */,
 				D21E53E92022DFBB00C619D5 /* Assets.xcassets */,
 				D21E53EB2022DFBC00C619D5 /* LaunchScreen.storyboard */,
@@ -150,6 +142,62 @@
 				D21E54042022DFBC00C619D5 /* Info.plist */,
 			);
 			path = swiftDemoUITests;
+			sourceTree = "<group>";
+		};
+		D21E542820244C0B00C619D5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D21E54122022E03400C619D5 /* TabbrVC.swift */,
+				D21E54142022E06100C619D5 /* CardVC.swift */,
+				D21E541C2023014500C619D5 /* NextVC.swift */,
+				D21E54162022E07400C619D5 /* RemindVC.swift */,
+				D21E54262024363500C619D5 /* RemindDetailVC.swift */,
+				D21E54182022E07D00C619D5 /* MapVC.swift */,
+				D21E541A2022E09100C619D5 /* SettingVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D21E542920244C1600C619D5 /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				D21E542D20244C5000C619D5 /* Views */,
+				D21E542C20244C4200C619D5 /* Models */,
+				D21E542820244C0B00C619D5 /* Controllers */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		D21E542A20244C2B00C619D5 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				D21E53E22022DFBB00C619D5 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		D21E542C20244C4200C619D5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D21E54242024353F00C619D5 /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D21E542D20244C5000C619D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D21E54222024339800C619D5 /* Cell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D21E542F20244C6000C619D5 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				D21E54202023105A00C619D5 /* NetTool.swift */,
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
