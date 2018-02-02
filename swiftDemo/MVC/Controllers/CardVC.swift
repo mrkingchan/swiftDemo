@@ -14,19 +14,19 @@ class CardVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var tableView:UITableView?;
     var dataArray:NSMutableArray?;
     
-    override func viewDidLoad() {
+     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
         self.navigationItem.title = NSStringFromClass(self.classForCoder).components(separatedBy: ".").last;
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "next", style: UIBarButtonItemStyle.plain, target: self, action:#selector(buttonAction));
         
+        //dataArray
         self.dataArray = NSMutableArray.init();
         for item in 0..<10 {
             self.dataArray?.add(String.init(format: "dataSource - %zd", item));
         }
         self.setUI();
     }
-    
     // MARK: private Method
     @objc func buttonAction() {
         print(#function);
@@ -90,5 +90,9 @@ class CardVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 subView.backgroundColor = UIColor.green;
             }
             return UISwipeActionsConfiguration.init(actions: [contexual1,contexual2,contexual3,contexual4]);
+    }
+    deinit {
+        self.dataArray = nil;
+        self.tableView = nil;
     }
 }

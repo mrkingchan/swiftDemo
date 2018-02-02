@@ -9,10 +9,9 @@
 import UIKit
 
 class RemindVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
+    
     var tableView:UITableView?;
     var dataArray:NSMutableArray?;
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +25,7 @@ class RemindVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         self.dataArray = NSMutableArray.init();
 //        self.loadData();
+        // MARK:loadData
         NetTool.innerRequestWithConfig(urlStr:"http://www.1ecst.com/tp_ecst/index.php/Api2/Users/getRegion", params:nil, sucess: { (json) in
             print(json);
             let jsonDic:NSDictionary = json as! NSDictionary;
@@ -37,6 +37,16 @@ class RemindVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }) { (error) in
             print(error);
         }
+        
+        /*NetTool.innerHttpRequestWithConfigure(httpMethod: "POST", urlStr: "http://www.1ecst.com/tp_ecst/index.php/Api2/Users/getRegion", params: "" as AnyObject, sucess: { (json) in
+            let jsonDic :NSDictionary = json as! NSDictionary;
+            self.dataArray?.addObjects(from: jsonDic.value(forKey: "regionName") as! [String]);
+            DispatchQueue.main.async {
+                self.tableView?.reloadData();
+            }
+        }) { (error) in
+            print(error.localizedDescription);
+        };*/
     }
     
     // MARK: addAction
@@ -111,6 +121,7 @@ class RemindVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             let swipAction = UISwipeActionsConfiguration.init(actions:array);
             return swipAction;
     }
+    
     // MARK: right
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

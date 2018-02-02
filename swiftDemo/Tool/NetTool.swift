@@ -48,4 +48,36 @@ class NetTool: NSObject {
         }
         return nil;
     }
+    
+    
+    // MARK: NSURLConnection类型的http请求
+    class func innerHttpRequestWithConfigure(httpMethod:String,urlStr:String,params:AnyObject?,sucess:@escaping sucess,failure:@escaping failure) -> Void {
+    let url:URL = URL.init(string: urlStr)!;
+    var request:URLRequest  = URLRequest.init(url: url);
+    request.httpMethod = httpMethod;
+    var data:Data?;
+    //httpBody
+        if ((params as AnyObject).isKind(of:NSString.classForCoder())) {
+        //String
+        data = (params as! String).data(using: String.Encoding.utf8);
+        } else if ((params as AnyObject).isKind(of: NSDictionary.classForCoder())) {
+        //dic
+        data = try? JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.init(rawValue: 0));
+        } else if ((params as AnyObject).isKind(of:NSData.classForCoder())) {
+        //data
+        data = params as! Data;
+    }
+    request.httpBody = data!;
+    request.timeoutInterval = 10;
+    NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { (response, data, error) in
+        if error == nil {
+            //
+            let json:NSDictionary = self.trsformToJSon(data: data as AnyObject)!;
+            sucess(json);
+        } else {
+            failure(error!);
+        }
+    }
+        
+    }
 }
