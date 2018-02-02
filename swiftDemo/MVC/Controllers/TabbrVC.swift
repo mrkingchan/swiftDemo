@@ -92,6 +92,7 @@ class TabbrVC: UITabBarController {
                     views.add(item);
                 }
             }
+        //scaleAnimation
         let scaleAnimation = CABasicAnimation.init(keyPath: "transform.scale");
         scaleAnimation.duration = 0.1;
         scaleAnimation.fromValue = NSNumber.init(value: 0.7);
