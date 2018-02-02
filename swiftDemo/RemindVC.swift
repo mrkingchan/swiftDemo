@@ -46,8 +46,12 @@ class RemindVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
         for index in 0..<1 {
             let alertAction = UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default) { action in
-               self.dataArray?.add(alertController.textFields?.first?.text);
-                self.tableView?.reloadData();
+                let tf:UITextField = (alertController.textFields?.first)!;
+                let content:String = tf.text!;
+                if content.characters.count >= 1 {
+                    self.dataArray?.add(alertController.textFields?.first?.text);
+                    self.tableView?.reloadData();
+                }
             };
             alertController.addAction(alertAction);
         }
@@ -116,5 +120,10 @@ class RemindVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
         let swipAction = UISwipeActionsConfiguration.init(actions: [contection]);
         return swipAction;
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let VC = RemindDetailVC.init(nibName: nil, bundle: nil);
+        VC.hidesBottomBarWhenPushed = true;
+        self.navigationController?.pushViewController(VC, animated: true);
     }
 }

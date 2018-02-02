@@ -38,7 +38,6 @@ class MapVC: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad();
-        
         self.view.backgroundColor = UIColor.white;
         // MARK: geo
         self.geo = CLGeocoder.init();
@@ -56,6 +55,7 @@ class MapVC: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
         self.map?.showsCompass = true;
         self.map?.showsUserLocation = true;
         self.map?.showsTraffic = true;
+        self.map?.userTrackingMode = MKUserTrackingMode.followWithHeading;
         self.map?.delegate = self as MKMapViewDelegate;
         self.view.addSubview(self.map!);
         
@@ -63,7 +63,6 @@ class MapVC: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
         if #available(iOS 11.0, *) {
             self.manager?.showsBackgroundLocationIndicator = true
         }
-        
         if CLLocationManager.locationServicesEnabled() {
             self.manager = CLLocationManager.init();
             self.manager?.distanceFilter = 10.0;

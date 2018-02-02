@@ -20,6 +20,9 @@
 		D21E541B2022E09100C619D5 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E541A2022E09100C619D5 /* SettingVC.swift */; };
 		D21E541D2023014500C619D5 /* NextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E541C2023014500C619D5 /* NextVC.swift */; };
 		D21E54212023105A00C619D5 /* NetTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E54202023105A00C619D5 /* NetTool.swift */; };
+		D21E54232024339800C619D5 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E54222024339800C619D5 /* Cell.swift */; };
+		D21E54252024353F00C619D5 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E54242024353F00C619D5 /* Model.swift */; };
+		D21E54272024363500C619D5 /* RemindDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E54262024363500C619D5 /* RemindDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		D21E541A2022E09100C619D5 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		D21E541C2023014500C619D5 /* NextVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextVC.swift; sourceTree = "<group>"; };
 		D21E54202023105A00C619D5 /* NetTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetTool.swift; sourceTree = "<group>"; };
+		D21E54222024339800C619D5 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		D21E54242024353F00C619D5 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		D21E54262024363500C619D5 /* RemindDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,9 +120,12 @@
 				D21E54142022E06100C619D5 /* CardVC.swift */,
 				D21E541C2023014500C619D5 /* NextVC.swift */,
 				D21E54162022E07400C619D5 /* RemindVC.swift */,
+				D21E54262024363500C619D5 /* RemindDetailVC.swift */,
 				D21E54202023105A00C619D5 /* NetTool.swift */,
 				D21E54182022E07D00C619D5 /* MapVC.swift */,
 				D21E541A2022E09100C619D5 /* SettingVC.swift */,
+				D21E54222024339800C619D5 /* Cell.swift */,
+				D21E54242024353F00C619D5 /* Model.swift */,
 				D21E53E62022DFBB00C619D5 /* Main.storyboard */,
 				D21E53E92022DFBB00C619D5 /* Assets.xcassets */,
 				D21E53EB2022DFBC00C619D5 /* LaunchScreen.storyboard */,
@@ -279,9 +288,12 @@
 			files = (
 				D21E54172022E07400C619D5 /* RemindVC.swift in Sources */,
 				D21E541B2022E09100C619D5 /* SettingVC.swift in Sources */,
+				D21E54272024363500C619D5 /* RemindDetailVC.swift in Sources */,
 				D21E54192022E07D00C619D5 /* MapVC.swift in Sources */,
 				D21E54132022E03400C619D5 /* TabbrVC.swift in Sources */,
 				D21E54152022E06100C619D5 /* CardVC.swift in Sources */,
+				D21E54252024353F00C619D5 /* Model.swift in Sources */,
+				D21E54232024339800C619D5 /* Cell.swift in Sources */,
 				D21E54212023105A00C619D5 /* NetTool.swift in Sources */,
 				D21E541D2023014500C619D5 /* NextVC.swift in Sources */,
 				D21E53E32022DFBB00C619D5 /* AppDelegate.swift in Sources */,
