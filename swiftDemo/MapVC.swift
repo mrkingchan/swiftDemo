@@ -30,7 +30,7 @@ class MapVC: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
 
         }
         // MARK: mapView
-        self.map = MKMapView.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 64));
+        self.map = MKMapView.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 49));
         self.map?.mapType = MKMapType.standard;
         self.map?.showsScale = true;
         self.map?.showsCompass = true;

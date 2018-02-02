@@ -77,11 +77,21 @@ class TabbrVC: UITabBarController {
         return viewController;
     }
             
-        
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        let index = self.tabBar.items?.index(of: item);
+        self.animationWith(index: index!);
+    }
     // MARK: animation
     func animationWith(index:Int) -> Void {
         let views = NSMutableArray.init(capacity: 4);
-        
+        let items:[UIView] = self.tabBar.subviews;
+        for index in 0..<items.count {
+            var item:UIView = items[index];
+            print(item.classForCoder);
+                if NSStringFromClass(item.classForCoder) == "UITabBarButton" {
+                    views.add(item);
+                }
+            }
         let scaleAnimation = CABasicAnimation.init(keyPath: "transform.scale");
         scaleAnimation.duration = 0.1;
         scaleAnimation.fromValue = NSNumber.init(value: 0.7);
@@ -90,5 +100,7 @@ class TabbrVC: UITabBarController {
         scaleAnimation.timingFunction = CAMediaTimingFunction.init(name:  kCAMediaTimingFunctionEaseInEaseOut);
         scaleAnimation.isRemovedOnCompletion = true;
         scaleAnimation.autoreverses = true;
+        let subView:UIView = views[index] as! UIView;
+        subView.layer.add(scaleAnimation, forKey: "nil");
     }
 }

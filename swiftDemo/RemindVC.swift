@@ -18,10 +18,11 @@ class RemindVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
         
-        self.tableView = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 64), style: UITableViewStyle.plain);
+        self.tableView = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 49), style: UITableViewStyle.plain);
         self.tableView?.dataSource = self as UITableViewDataSource;
         self.tableView?.delegate = self as UITableViewDelegate;
         self.view.addSubview(self.tableView!);
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "add", style: UIBarButtonItemStyle.plain, target: self, action: #selector(addAction));
         
         self.dataArray = NSMutableArray.init();
 //        self.loadData();
@@ -36,6 +37,21 @@ class RemindVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }) { (error) in
             print(error);
         }
+    }
+    
+    // MARK: addAction
+    @objc func addAction() {
+        let alertController = UIAlertController.init(title:"add", message:nil, preferredStyle: UIAlertControllerStyle.alert);
+        alertController.addTextField { (tf) in
+        }
+        for index in 0..<1 {
+            let alertAction = UIAlertAction.init(title: "确定", style: UIAlertActionStyle.default) { action in
+               self.dataArray?.add(alertController.textFields?.first?.text);
+                self.tableView?.reloadData();
+            };
+            alertController.addAction(alertAction);
+        }
+        self.present(alertController, animated: true, completion: nil);
     }
     
     // MARK: loadData
@@ -64,5 +80,41 @@ class RemindVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
         cell.textLabel?.text = self.dataArray?.object(at: indexPath.row) as? String;
         return cell;
+    }
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "deleteAction";
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true;
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            self.dataArray?.removeObject(at: indexPath.row);
+            self.tableView?.reloadData();
+        }
+    }
+    
+    // MARK: iOS11
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+            let contectAction = UIContextualAction.init(style: UIContextualAction.Style.normal, title: "delete", handler: { (action, subView, nil) in
+                self.dataArray?.removeObject(at: indexPath.row);
+                self.tableView?.reloadData();
+            });
+            let array:[UIContextualAction] = [contectAction];
+            let swipAction = UISwipeActionsConfiguration.init(actions:array);
+            return swipAction;
+    }
+    // MARK: right
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let contection = UIContextualAction.init(style: UIContextualAction.Style.destructive, title:"delete") { (action, subView, nil) in
+            self.dataArray?.removeObject(at: indexPath.row);
+            self.tableView?.reloadData();
+        }
+        let swipAction = UISwipeActionsConfiguration.init(actions: [contection]);
+        return swipAction;
     }
 }

@@ -32,6 +32,7 @@ class CardVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         VC.complete = { object in
             print(object.classForCoder);
         }
+        VC.hidesBottomBarWhenPushed = true;
         self.navigationController?.pushViewController(VC, animated: true);
     }
     // MARK: setUI
