@@ -17,6 +17,7 @@ class SettingVC: UIViewController,UICollectionViewDataSource,UICollectionViewDel
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
         
+        // MARK: collectionView
         let layout = UICollectionViewFlowLayout.init();
         layout.itemSize = CGSize.init(width: Double((UIScreen.main.bounds.size.width - 10)/3.0), height: Double((UIScreen.main.bounds.size.width - 10)/3.0));
         layout.minimumLineSpacing = 5.0;

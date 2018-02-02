@@ -96,6 +96,7 @@ class TabbrVC: UITabBarController {
         subView.layer.add(scaleAnimation, forKey: "nil");
     }
     
+    // MARK: viewController
     func swiftClassFromString(className: String) -> UIViewController! {
         // get the project name
         if  let appName: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String? {

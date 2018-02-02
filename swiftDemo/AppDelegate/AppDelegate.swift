@@ -20,9 +20,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabbarVC = TabbrVC.init(nibName: nil, bundle: nil);
         window?.rootViewController = tabbarVC;
         window?.makeKeyAndVisible();
-        return true
+        self.set3DTouch();
+        return true;
     }
 
+    // MARK: 3D Touch
+    func set3DTouch() {
+        let touch1 = UIApplicationShortcutItem.init(type:"1", localizedTitle: "location", localizedSubtitle:"subLocation", icon: UIApplicationShortcutIcon.init(type: UIApplicationShortcutIconType.location), userInfo: nil);
+        
+        let touch2 = UIApplicationShortcutItem.init(type:"1", localizedTitle: "share", localizedSubtitle:"subShare", icon: UIApplicationShortcutIcon.init(type: UIApplicationShortcutIconType.share), userInfo: nil);
+        
+        let touch3 = UIApplicationShortcutItem.init(type:"1", localizedTitle: "add", localizedSubtitle:"subAdd", icon: UIApplicationShortcutIcon.init(type: UIApplicationShortcutIconType.add), userInfo: nil);
+        
+            let touch4 = UIApplicationShortcutItem.init(type:"1", localizedTitle: "search", localizedSubtitle:"subSearch", icon: UIApplicationShortcutIcon.init(type: UIApplicationShortcutIconType.search), userInfo: nil)
+        
+        UIApplication.shared.shortcutItems = [touch1,touch2,touch3,touch4];
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        let itemStr = shortcutItem.localizedSubtitle;
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "name"), object: "this is a notificaiton", userInfo:[:]);
+    }
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

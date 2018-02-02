@@ -26,6 +26,13 @@ class CardVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             self.dataArray?.add(String.init(format: "dataSource - %zd", item));
         }
         self.setUI();
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(getValue(noti:)), name: NSNotification.Name.init("name"), object:nil);
+    }
+    
+    @objc  func getValue(noti:NSNotification) {
+        print("thread = %@",Thread.current);
+        print(noti.object);
     }
     // MARK: private Method
     @objc func buttonAction() {
