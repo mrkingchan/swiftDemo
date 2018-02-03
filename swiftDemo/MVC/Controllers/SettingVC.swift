@@ -16,7 +16,7 @@ class SettingVC: UIViewController,UICollectionViewDataSource,UICollectionViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white;
-        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title:NSStringFromClass(PhotoVC.classForCoder()).components(separatedBy: ".").last, style: UIBarButtonItemStyle.plain, target: self, action: #selector(goNext));
         // MARK: collectionView
         let layout = UICollectionViewFlowLayout.init();
         layout.itemSize = CGSize.init(width: Double((UIScreen.main.bounds.size.width - 10)/3.0), height: Double((UIScreen.main.bounds.size.width - 10)/3.0));
@@ -30,6 +30,12 @@ class SettingVC: UIViewController,UICollectionViewDataSource,UICollectionViewDel
         self.view.addSubview(self.collectionView!);
     }
 
+    // MARK: private Method
+    @objc func goNext() ->Void {
+        let VC = PhotoVC.init(nibName: nil, bundle: nil);
+        VC.hidesBottomBarWhenPushed = true;
+        self.navigationController?.pushViewController(VC, animated: true);
+    }
     // MARK: UICollectionViewDataSource&delegate
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1;
@@ -42,6 +48,4 @@ class SettingVC: UIViewController,UICollectionViewDataSource,UICollectionViewDel
         cell.backgroundColor = UIColor.init(red: CGFloat(Double(Random.number(end: 255).first!)/255.0), green: CGFloat(Double(Random.number(end: 255).first!)/255.0), blue: CGFloat(Double(Random.number(end: 255).first!)/255.0), alpha: 1.0);
         return cell;
     }
-    
-    
 }

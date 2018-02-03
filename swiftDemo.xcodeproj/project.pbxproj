@@ -25,6 +25,10 @@
 		D21E54252024353F00C619D5 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E54242024353F00C619D5 /* Model.swift */; };
 		D21E54272024363500C619D5 /* RemindDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E54262024363500C619D5 /* RemindDetailVC.swift */; };
 		D21E543120247E1700C619D5 /* ClassForInitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E543020247E1700C619D5 /* ClassForInitVC.swift */; };
+		D21E54332025404600C619D5 /* PhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E54322025404600C619D5 /* PhotoVC.swift */; };
+		D21E54352025437300C619D5 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21E54342025437300C619D5 /* PhotoCell.swift */; };
+		D2B2D7CE20255AC4000336CF /* PreViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2D7CD20255AC4000336CF /* PreViewVC.swift */; };
+		D2B2D7D020255CCE000336CF /* PreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B2D7CF20255CCE000336CF /* PreviewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +74,10 @@
 		D21E54242024353F00C619D5 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		D21E54262024363500C619D5 /* RemindDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindDetailVC.swift; sourceTree = "<group>"; };
 		D21E543020247E1700C619D5 /* ClassForInitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassForInitVC.swift; sourceTree = "<group>"; };
+		D21E54322025404600C619D5 /* PhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVC.swift; sourceTree = "<group>"; };
+		D21E54342025437300C619D5 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		D2B2D7CD20255AC4000336CF /* PreViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreViewVC.swift; sourceTree = "<group>"; };
+		D2B2D7CF20255CCE000336CF /* PreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewCell.swift; sourceTree = "<group>"; };
 		F66D33491633F8C49233053D /* Pods-swiftDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-swiftDemo/Pods-swiftDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +188,8 @@
 				D21E54262024363500C619D5 /* RemindDetailVC.swift */,
 				D21E54182022E07D00C619D5 /* MapVC.swift */,
 				D21E541A2022E09100C619D5 /* SettingVC.swift */,
+				D21E54322025404600C619D5 /* PhotoVC.swift */,
+				D2B2D7CD20255AC4000336CF /* PreViewVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -214,6 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				D21E54222024339800C619D5 /* Cell.swift */,
+				D21E54342025437300C619D5 /* PhotoCell.swift */,
+				D2B2D7CF20255CCE000336CF /* PreviewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -412,10 +424,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D21E54352025437300C619D5 /* PhotoCell.swift in Sources */,
 				D21E54172022E07400C619D5 /* RemindVC.swift in Sources */,
 				D21E541B2022E09100C619D5 /* SettingVC.swift in Sources */,
 				D21E54272024363500C619D5 /* RemindDetailVC.swift in Sources */,
+				D2B2D7CE20255AC4000336CF /* PreViewVC.swift in Sources */,
 				D21E54192022E07D00C619D5 /* MapVC.swift in Sources */,
+				D21E54332025404600C619D5 /* PhotoVC.swift in Sources */,
 				D21E54132022E03400C619D5 /* TabbrVC.swift in Sources */,
 				D21E543120247E1700C619D5 /* ClassForInitVC.swift in Sources */,
 				D21E54152022E06100C619D5 /* CardVC.swift in Sources */,
@@ -423,6 +438,7 @@
 				D21E54232024339800C619D5 /* Cell.swift in Sources */,
 				D21E54212023105A00C619D5 /* NetTool.swift in Sources */,
 				D21E541D2023014500C619D5 /* NextVC.swift in Sources */,
+				D2B2D7D020255CCE000336CF /* PreviewCell.swift in Sources */,
 				D21E53E32022DFBB00C619D5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
