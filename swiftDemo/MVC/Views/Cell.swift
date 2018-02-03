@@ -10,11 +10,13 @@ import UIKit
 
 class Cell: UITableViewCell {
     
+    // MARK: var
     var productImage:UIImageView?;
     var titleLabel:UILabel?;
     var model:Model?;
     var complete:((String,UIImageView)->())?;
     
+    // MARK: initialize Method
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         self.setUI();
@@ -26,7 +28,7 @@ class Cell: UITableViewCell {
     
     // MARK: setUI
     func setUI(){
-        //Image
+        //productImage
         self.productImage = UIImageView.init(frame: CGRect.init(x: 10, y: 10, width: 80, height: 80));
         self.productImage?.clipsToBounds = true;
         self.productImage?.layer.cornerRadius = 5.0;
@@ -43,12 +45,14 @@ class Cell: UITableViewCell {
         self.addSubview(self.titleLabel!);
     }
     
+    // MARK: private Method
     @objc func buttonAction(sender:AnyObject) {
         if complete != nil {
             complete!((self.model?.titleStr!)!,self.productImage!);
         }
     }
     
+    // MARK: setCellWithData
     func setCellwithData(model:AnyObject){
         if (model.isKind(of: Model.classForCoder())) {
             let data = model as! Model;

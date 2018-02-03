@@ -48,7 +48,6 @@ class PreViewVC: UIViewController,UICollectionViewDataSource,UICollectionViewDel
         cell.setCellWithData(model: self.dataArray![indexPath.row] as! ALAsset);
         return cell;
     }
-    
     // MARK: memeory management
     deinit {
         self.collectionView = nil;
