@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.set3DTouch();
         return true;
     }
-
+    
     // MARK: 3D Touch
     func set3DTouch() {
         let touch1 = UIApplicationShortcutItem.init(type:"1", localizedTitle: "location", localizedSubtitle:"subLocation", icon: UIApplicationShortcutIcon.init(type: UIApplicationShortcutIconType.location), userInfo: nil);
